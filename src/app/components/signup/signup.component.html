@@ -1,0 +1,77 @@
+<div class="center-container">
+<mat-card>
+    <mat-card-title>Rejestracja</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div>
+          <mat-form-field>
+            <mat-label>Imię</mat-label>
+            <input type="text" matInput placeholder="Kiichiro" formControlName="firstName" required>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Nazwisko</mat-label>
+            <input type="text" matInput placeholder="Toyoda" formControlName="lastName" required>
+          </mat-form-field>
+        </div>
+
+       
+
+        <div>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="text" matInput placeholder="kiichiro@toyoda.com" formControlName="email" required>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Telefon komórkowy</mat-label>
+            <input type="text" matInput placeholder="Telefon komórkowy " formControlName="phoneNumber" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Hasło</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Powtórz hasło</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+    
+        <p *ngIf="error" class="error">
+          {{ error }}
+        </p>
+    
+        <div class="button">
+          <button type="submit" mat-raised-button color="primary"><mat-icon>create</mat-icon>Utwórz konto</button>
+        </div>
+  
+        <div class="register">
+          <p>Mam już konto</p>
+          <div class="register-link">
+            <button mat-button color="accent" (click)="navigateToRegistration()">Zaloguj się</button>
+          </div>
+        </div>
+      </form>
+        
+      
+    </mat-card-content>
+</mat-card>
+</div>
+
+
+  

@@ -1,0 +1,26 @@
+<div *ngIf="supplier">
+    <mat-card>
+      <mat-table [dataSource]="[supplier]" class="table">
+        <!-- Column Definitions -->
+        <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+          <mat-header-cell *matHeaderCellDef> {{ columnLabels[column] }} </mat-header-cell>
+          <mat-cell *matCellDef="let supplier">
+            <mat-form-field>
+              <input matInput [(ngModel)]="supplier[column]" [placeholder]="columnLabels[column]" />
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+        
+        <!-- Add header and row definitions -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </mat-card>
+  
+    <div class="actions">
+      <button mat-raised-button color="primary" (click)="addSupplier(supplier)" *ngIf="!supplier.id">Dodaj</button>
+      <button mat-raised-button color="primary" (click)="updateSupplier(supplier)" *ngIf="supplier.id">Zmień</button>
+      <button mat-raised-button color="primary" (click)="deleteSupplier(supplier)" *ngIf="supplier.id">Usuń</button>
+    </div>
+  </div>
+  

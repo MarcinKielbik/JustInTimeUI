@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<mat-drawer-container autosize>
+    <mat-drawer #drawer mode="side" opened>
+      <p class="user">{{ email }}</p>
+      <p class="role">Rola: {{ role }}</p>
+
+      <button mat-button color="basic" class="menu-button" routerLink="kanban">
+        <mat-icon>list</mat-icon>
+        <span>Kanbany</span>
+      </button>
+
+      <button mat-button color="basic" class="menu-button" routerLink="suppliers">
+        <mat-icon>local_shipping</mat-icon>
+        <span>Dostawcy</span>
+      </button>
+
+    <button mat-button color="basic" class="menu-button" routerLink="order">
+      <mat-icon>markunread_mailbox</mat-icon>
+      <span>Zamówienia</span>
+    </button>
+
+    <button mat-button color="basic" class="menu-button" routerLink="settings">
+      <mat-icon>settings</mat-icon>
+      <span>Ustawienia</span>
+    </button>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

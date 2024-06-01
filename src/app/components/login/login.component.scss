@@ -1,0 +1,56 @@
+.center-container {
+  height: 100vh;
+  padding: 10px;
+}
+
+mat-card {
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15vh;
+    max-width: 65vh;
+    // padding: 15px 5px;
+    padding: 5px;
+}
+ 
+
+
+  mat-card-title {
+    margin: 25px;
+    margin-bottom: 30px;
+  }
+
+  mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  .sub {
+    margin-top: 35px;
+  }
+
+  mat-form-field {
+    width: 100%;
+    min-width: 300px;
+  }
+
+  .error {
+    padding: 16px;
+    // width: 300px;
+    background-color: red;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+
+  }
+
+  .register {
+      text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 30px;
+  }

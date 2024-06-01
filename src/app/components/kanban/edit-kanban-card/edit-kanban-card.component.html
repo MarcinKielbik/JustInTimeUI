@@ -1,0 +1,48 @@
+<div *ngIf="card">
+    <h2 class="newcardtitle">Nowa karta</h2>
+    <mat-card>
+        <mat-table [dataSource]="[card]" class="table">
+            <!-- Column Definitions -->
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef>Nazwa</mat-header-cell>
+                <mat-cell *matCellDef="let card">
+                    <mat-form-field>
+                        <input matInput [(ngModel)]="card.name" placeholder="Nazwa" />
+                    </mat-form-field>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef>Opis</mat-header-cell>
+                <mat-cell *matCellDef="let card">
+                    <mat-form-field>
+                        <input matInput [(ngModel)]="card.description" placeholder="Opis" />
+                    </mat-form-field>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+                <mat-cell *matCellDef="let card">
+                    <mat-form-field>
+                        <mat-select [(ngModel)]="card.status" placeholder="Wybierz status">
+                            <mat-option *ngFor="let status of statusOptions" [value]="status.value">
+                                {{ status.viewValue }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Add header and row definitions -->
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </mat-card>
+
+    <div class="actions">
+        <button mat-raised-button color="primary" (click)="addKanbanCard(card)" *ngIf="!card.id">Dodaj</button>
+        <button mat-raised-button color="primary" (click)="updateKanbanCard(card)" *ngIf="card.id">Zmień</button>
+        <button mat-raised-button color="primary" (click)="deleteKanbanCard(card)" *ngIf="card.id">Usuń</button>
+    </div>
+</div>
