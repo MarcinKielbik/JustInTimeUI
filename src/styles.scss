@@ -2,3 +2,12 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-snack-bar-container {
+    background: #333; // ciemne tło
+    color: #fff; // jasny tekst
+  
+    .mat-simple-snackbar-action {
+      color: #ff4081; // kolor akcji, np. przycisk 'Close'
+    }
+  }

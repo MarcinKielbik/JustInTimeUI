@@ -1,0 +1,113 @@
+<h1>Nowe zamówienie</h1>
+
+<form [formGroup]="orderForm" (ngSubmit)="createNewOrder()">
+  <div class="form-container">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Nazwa Produktu</mat-label>
+      <input matInput formControlName="productName" required>
+      <mat-error *ngIf="orderForm.get('productName')?.hasError('required')">
+        Nazwa Produktu jest wymagana
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Ilość</mat-label>
+      <input matInput formControlName="quantity" type="number" required>
+      <mat-error *ngIf="orderForm.get('quantity')?.hasError('required')">
+        Ilość jest wymagana
+      </mat-error>
+      <mat-error *ngIf="orderForm.get('quantity')?.hasError('min')">
+        Ilość musi być większa niż 0
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Cena za sztukę</mat-label>
+      <input matInput formControlName="pricePerUnit" type="number" required>
+      <mat-error *ngIf="orderForm.get('pricePerUnit')?.hasError('required')">
+        Cena za sztukę jest wymagana
+      </mat-error>
+      <mat-error *ngIf="orderForm.get('pricePerUnit')?.hasError('min')">
+        Cena za sztukę musi być większa niż 0.01
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Waluta</mat-label>
+      <mat-select formControlName="currency" required>
+        <mat-option *ngFor="let currency of currencies" [value]="currency.value">
+          {{ currency.viewValue }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="orderForm.get('currency')?.hasError('required')">
+        Waluta jest wymagana
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Miejsce Odbioru</mat-label>
+      <input matInput formControlName="pickupLocation" required>
+      <mat-error *ngIf="orderForm.get('pickupLocation')?.hasError('required')">
+        Miejsce Odbioru jest wymagane
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Miejsce docelowe</mat-label>
+      <input matInput formControlName="destination" required>
+      <mat-error *ngIf="orderForm.get('destination')?.hasError('required')">
+        Miejsce docelowe jest wymagane
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Data Zamówienia</mat-label>
+      <input matInput [matDatepicker]="orderDatePicker" formControlName="orderDate" required>
+      <mat-datepicker-toggle matSuffix [for]="orderDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #orderDatePicker></mat-datepicker>
+      <mat-error *ngIf="orderForm.get('orderDate')?.hasError('required')">
+        Data Zamówienia jest wymagana
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Godzina Zamówienia</mat-label>
+      <input matInput formControlName="orderTime" type="time" required>
+      <mat-error *ngIf="orderForm.get('orderTime')?.hasError('required')">
+        Godzina Zamówienia jest wymagana
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Termin</mat-label>
+      <input matInput [matDatepicker]="dueDatePicker" formControlName="dueDate" required>
+      <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #dueDatePicker></mat-datepicker>
+      <mat-error *ngIf="orderForm.get('dueDate')?.hasError('required')">
+        Termin jest wymagany
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Godzina Terminu</mat-label>
+      <input matInput formControlName="dueTime" type="time" required>
+      <mat-error *ngIf="orderForm.get('dueTime')?.hasError('required')">
+        Godzina Terminu jest wymagana
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Dostawca</mat-label>
+      <mat-select formControlName="supplierId" required>
+        <mat-option *ngFor="let supplier of suppliers" [value]="supplier.id">
+          {{ supplier.firstName }} {{ supplier.lastName }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="orderForm.get('supplierId')?.hasError('required')">
+        Dostawca jest wymagany
+      </mat-error>
+    </mat-form-field>
+
+  </div>
+  <button class="order-btn" mat-raised-button color="primary" type="submit">Dodaj zamówienie</button>
+</form>

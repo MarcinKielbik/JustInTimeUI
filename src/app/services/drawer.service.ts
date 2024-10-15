@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 
+
+/**
+ * @class DrawerService
+ */
+
 @Injectable({
   providedIn: 'root'
 })

@@ -4,13 +4,17 @@ import { Observable } from 'rxjs';
 import { KanbanCard } from '../models/kanban-card.model';
 import { AuthService } from './auth.service';
 
+
+/**
+ * @class KanbanService
+ */
+
 @Injectable({
   providedIn: 'root'
 })
 export class KanbanService {
 
   private apiUrl = 'https://localhost:7148/api/Kanban'; // URL backendu
-
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   public getKanbanCards(): Observable<KanbanCard[]> {

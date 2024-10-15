@@ -1,0 +1,65 @@
+<h1>Ustawienia</h1>
+
+<!-- <mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Imię</mat-card-title>
+    <mat-card-subtitle *ngIf="!isEditing.firstName">
+      {{ user.firstName }}
+    </mat-card-subtitle>
+    <mat-form-field *ngIf="isEditing.firstName" class="full-width">
+      <input matInput [(ngModel)]="user.firstName" placeholder="Imię">
+    </mat-form-field>
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" *ngIf="!isEditing.firstName" (click)="toggleEdit('firstName')">Edytuj</button>
+    <button mat-raised-button color="primary" *ngIf="isEditing.firstName" (click)="saveChanges()">Zapisz</button>
+    <button mat-raised-button color="warn" *ngIf="isEditing.firstName" (click)="toggleEdit('firstName')">Anuluj</button>
+  </mat-card-actions>
+</mat-card> -->
+
+<!-- <mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Nazwisko</mat-card-title>
+    <mat-card-subtitle *ngIf="!isEditing.lastName">
+      {{ user.lastName }}
+    </mat-card-subtitle>
+    <mat-form-field *ngIf="isEditing.lastName" class="full-width">
+      <input matInput [(ngModel)]="user.lastName" placeholder="Nazwisko">
+    </mat-form-field>
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" *ngIf="!isEditing.lastName" (click)="toggleEdit('lastName')">Edytuj</button>
+    <button mat-raised-button color="primary" *ngIf="isEditing.lastName" (click)="saveChanges()">Zapisz</button>
+    <button mat-raised-button color="warn" *ngIf="isEditing.lastName" (click)="toggleEdit('lastName')">Anuluj</button>
+  </mat-card-actions>
+</mat-card> -->
+
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Zmień hasło</mat-card-title>
+    <mat-card-subtitle *ngIf="!isEditing.password">
+      ********
+    </mat-card-subtitle>
+    <mat-form-field *ngIf="isEditing.password" class="full-width">
+      <input matInput [(ngModel)]="user.password" [type]="hidePassword ? 'password' : 'text'" 
+      placeholder="Hasło">
+      <button mat-icon-button  matSuffix (click)="hidePassword = !hidePassword">
+        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" *ngIf="!isEditing.password" (click)="toggleEdit('password')">Edytuj</button>
+    <button mat-raised-button color="primary" *ngIf="isEditing.password" (click)="saveChanges()">Zapisz</button>
+    <button style="margin-left: 10px;" mat-raised-button color="basic" *ngIf="isEditing.password" (click)="toggleEdit('password')">Anuluj</button>
+  </mat-card-actions>
+</mat-card>
+
+<!-- <mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Usuń konto</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-raised-button color="warn">Usuń</button>
+  </mat-card-actions>
+</mat-card> -->

@@ -5,6 +5,15 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { tap, catchError, Observable, of } from 'rxjs';
 
+/**
+ * @class AuthService
+ */
+
+/**
+ * @class 
+ */
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -83,12 +92,14 @@ export class AuthService {
     return null;
   }
 
+  
+
   isLoggedIn(): boolean {
     const token = this.getToken();
     return token ? !this.jwtHelper.isTokenExpired(token) : false;
   }
 
-  getDecodedToken(): any { // Zmieniono nazwę metody na `getDecodedToken`
+  getDecodedToken(): any { 
     const token = this.getToken();
     return token ? this.jwtHelper.decodeToken(token) : null;
   }

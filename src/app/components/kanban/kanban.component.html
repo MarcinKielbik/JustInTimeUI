@@ -1,22 +1,21 @@
-<h1>Kanban - zarządzanie produkcją</h1>
+<h1>Kanban - planowanie produkcji</h1>
 
 <mat-card>
-  <mat-table [dataSource]="kanbanCards">
-    <!-- Definicje kolumn -->
+  <mat-table [dataSource]="kanbanCards" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef="name">Nazwa</mat-header-cell>
-      <mat-cell *matCellDef="let card">{{ card.name }}</mat-cell>
+      <mat-header-cell *matHeaderCellDef> Nazwa </mat-header-cell>
+      <mat-cell *matCellDef="let card"> {{ card.name }} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef>Opis</mat-header-cell>
-      <mat-cell *matCellDef="let card">{{ card.description }}</mat-cell>
+      <mat-header-cell *matHeaderCellDef> Opis </mat-header-cell>
+      <mat-cell *matCellDef="let card"> {{ card.description }} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="status">
-      <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
-      <mat-cell *matCellDef="let card">{{ card.status }}</mat-cell>
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell *matCellDef="let card"> {{ card.status }} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef>Akcje</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Akcje </mat-header-cell>
       <mat-cell *matCellDef="let card">
         <button mat-icon-button (click)="editKanbanCard(card)">
           <mat-icon>edit</mat-icon>
@@ -24,15 +23,14 @@
       </mat-cell>
     </ng-container>
 
-    <!-- Definicje wierszy -->
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 </mat-card>
 
 <button mat-raised-button color="primary" (click)="initNewKanban()">Dodaj kartę</button>
 
 <app-edit-kanban-card 
-[card]="kanbanCardToEdit" 
-(cardUpdated)="updateKanbanList($event)">
+  [card]="kanbanCardToEdit" 
+  (cardUpdated)="updateKanbanList($event)">
 </app-edit-kanban-card>

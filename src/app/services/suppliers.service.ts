@@ -4,6 +4,10 @@ import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
 import { Supplier } from '../models/supplier.model';
 
+/**
+ * @class SuppliersService
+*/
+
 @Injectable({
   providedIn: 'root'
 })
@@ -32,4 +36,8 @@ export class SuppliersService {
   public deleteSupplier(supplier: Supplier): Observable<Supplier[]> {
     return this.http.delete<Supplier[]>(`${this.apiUrl}/${supplier.id}`);
   }
+
+  /*public deleteSupplier(id: number): Observable<Supplier[]> {
+    return this.http.delete<Supplier[]>(`${this.apiUrl}/${id}`);
+  }*/
 }

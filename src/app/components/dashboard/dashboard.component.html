@@ -5,7 +5,8 @@
       <p class="role">Rola: {{ role }}</p>
 
       <button mat-button color="basic" class="menu-button" routerLink="kanban">
-        <mat-icon>list</mat-icon>
+        <mat-icon>checklist</mat-icon>
+        <!-- <mat-icon>list</mat-icon> -->
         <span>Kanbany</span>
       </button>
 
@@ -14,14 +15,19 @@
         <span>Dostawcy</span>
       </button>
 
-    <button mat-button color="basic" class="menu-button" routerLink="order">
+    <button mat-button color="basic" class="menu-button" routerLink="orders">
       <mat-icon>markunread_mailbox</mat-icon>
       <span>Zamówienia</span>
     </button>
 
-    <button mat-button color="basic" class="menu-button" routerLink="settings">
+    <button mat-button color="basic" class="menu-button" routerLink="user-settings">
       <mat-icon>settings</mat-icon>
       <span>Ustawienia</span>
+    </button>
+
+    <button mat-button color="basic" class="menu-button" routerLink="about">
+      <mat-icon>info</mat-icon>
+      <span>O aplikacji</span>
     </button>
     </mat-drawer>
     <mat-drawer-content>

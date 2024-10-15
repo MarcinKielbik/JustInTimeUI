@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import ValidateForm from '../../helper/validationform';
 
+/**
+ * @class SignupComponent 
+*/
+
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',

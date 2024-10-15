@@ -1,0 +1,14 @@
+{
+    "plugins": ["node_modules/jsdoc-ts"],
+    "source": {
+      "include": ["src/app"],
+      "includePattern": ".+\\.ts$",
+      "excludePattern": "(node_modules|dist)"
+    },
+    "opts": {
+      "destination": "./docs",
+      "recurse": true,
+      "template": "templates/default"
+    }
+}
+  

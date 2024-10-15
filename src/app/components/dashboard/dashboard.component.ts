@@ -4,6 +4,9 @@ import { DrawerService } from '../../services/drawer.service';
 import { AuthService } from '../../services/auth.service';
 import { UserStoreService } from '../../services/user-store.service';
 
+/**
+ * @class DashboardComponent
+*/
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',

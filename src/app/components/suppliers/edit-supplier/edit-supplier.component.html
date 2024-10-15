@@ -1,26 +1,46 @@
 <div *ngIf="supplier">
-    <mat-card>
-      <mat-table [dataSource]="[supplier]" class="table">
-        <!-- Column Definitions -->
-        <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
-          <mat-header-cell *matHeaderCellDef> {{ columnLabels[column] }} </mat-header-cell>
-          <mat-cell *matCellDef="let supplier">
+  <mat-card>
+    <mat-table [dataSource]="[supplier]" class="table">
+      <!-- Column Definitions -->
+      <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+        <mat-header-cell *matHeaderCellDef> {{ columnLabels[column] }} </mat-header-cell>
+        <mat-cell *matCellDef="let supplier">
+          <!-- Wyświetl pole hasła tylko jeśli jest zdefiniowane -->
+          <ng-container *ngIf="column !== 'password'; else passwordField">
             <mat-form-field>
-              <input matInput [(ngModel)]="supplier[column]" [placeholder]="columnLabels[column]" />
+              <input 
+                matInput 
+                [(ngModel)]="supplier[column]" 
+                [type]="column === 'password' ? 'password' : 'text'" 
+                [placeholder]="columnLabels[column]" 
+              />
             </mat-form-field>
-          </mat-cell>
-        </ng-container>
-        
-        <!-- Add header and row definitions -->
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table>
-    </mat-card>
-  
-    <div class="actions">
-      <button mat-raised-button color="primary" (click)="addSupplier(supplier)" *ngIf="!supplier.id">Dodaj</button>
-      <button mat-raised-button color="primary" (click)="updateSupplier(supplier)" *ngIf="supplier.id">Zmień</button>
-      <button mat-raised-button color="primary" (click)="deleteSupplier(supplier)" *ngIf="supplier.id">Usuń</button>
-    </div>
+          </ng-container>
+          <ng-template #passwordField>
+            <!-- Pole hasła -->
+            <mat-form-field>
+              <input 
+                matInput 
+                [(ngModel)]="password" 
+                [type]="hidePassword ? 'password' : 'text'" 
+                placeholder="Hasło" 
+              />
+              <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
+            </mat-form-field>
+          </ng-template>
+        </mat-cell>
+      </ng-container>
+      
+      <!-- Add header and row definitions -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-card>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" (click)="addSupplier(supplier)" *ngIf="!supplier.id">Dodaj</button>
+    <button mat-raised-button color="primary" (click)="updateSupplier(supplier)" *ngIf="supplier.id">Zmień</button>
   </div>
-  
+</div>

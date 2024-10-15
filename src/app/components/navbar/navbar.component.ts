@@ -2,6 +2,13 @@ import { Component } from '@angular/core';
 import { DrawerService } from '../../services/drawer.service';
 import { AuthService } from '../../services/auth.service';
 
+
+/**
+ * @class NavbarComponent {
+
+*/
+
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',

@@ -1,63 +1,30 @@
 <h1>Dostawcy</h1>
 
 <mat-card>
-  <mat-table [dataSource]="suppliers" class="mat-elevation-z8">
-
-    <!-- Email Column -->
-    <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-      <mat-cell *matCellDef="let supplier"> {{ supplier.email }} </mat-cell>
-    </ng-container>
-
-    <!-- First Name Column -->
-    <ng-container matColumnDef="firstName">
-      <mat-header-cell *matHeaderCellDef="firstName"> Imię </mat-header-cell>
-      <mat-cell *matCellDef="let supplier"> {{ supplier.firstName }} </mat-cell>
-    </ng-container>
-
-    <!-- Last Name Column -->
-    <ng-container matColumnDef="lastName">
-      <mat-header-cell *matHeaderCellDef="lastName"> Nazwisko </mat-header-cell>
-      <mat-cell *matCellDef="let supplier"> {{ supplier.lastName }} </mat-cell>
-    </ng-container>
-
-    <!-- Last Name Column -->
-    <ng-container matColumnDef="password">
-        <mat-header-cell *matHeaderCellDef="password"> Hasło </mat-header-cell>
-        <mat-cell *matCellDef="let supplier"> {{ supplier.password }} </mat-cell>
-      </ng-container>
-
-    <!-- Company Name Column -->
-    <ng-container matColumnDef="companyName">
-      <mat-header-cell *matHeaderCellDef="companyName"> Nazwa firmy </mat-header-cell>
-      <mat-cell *matCellDef="let supplier"> {{ supplier.companyName }} </mat-cell>
-    </ng-container>
-
-    <!-- Phone Number Column -->
-    <ng-container matColumnDef="phoneNumber">
-      <mat-header-cell *matHeaderCellDef> Telefon komórkowy </mat-header-cell>
-      <mat-cell *matCellDef="let supplier"> {{ supplier.phoneNumber }} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef>Akcje</mat-header-cell>
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container *ngFor="let column of displayedColumns">
+      <ng-container [matColumnDef]="column">
+        <mat-header-cell *matHeaderCellDef>{{ columnLabels[column] }}</mat-header-cell>
         <mat-cell *matCellDef="let supplier">
-          <button mat-icon-button (click)="editSupplier">
-            <mat-icon>edit</mat-icon>
-          </button>
+          <span *ngIf="column !== 'actions' && supplier">{{ supplier[column] }}</span>
+          <span *ngIf="column === 'actions' && supplier">
+            <button mat-icon-button (click)="editSupplier(supplier)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </span>
         </mat-cell>
       </ng-container>
+    </ng-container>
 
-    <!-- Header and Row Declarations -->
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
   </mat-table>
 </mat-card>
 
-<button mat-raised-button color="primary" (click)="initNewSupplier()">Dodaj dostawcę</button>
+<button mat-raised-button color="primary" (click)="initNewSupplier()">Nowy dostawca</button>
 
 <app-edit-supplier
-    [supplier] = "supplierToEdit"
-    (supplierUpdated)="updateSupplier()">
+  *ngIf="supplierToEdit"
+  [supplier]="supplierToEdit"
+  (supplierUpdated)="updateSupplier()">
 </app-edit-supplier>

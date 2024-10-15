@@ -43,6 +43,6 @@
     <div class="actions">
         <button mat-raised-button color="primary" (click)="addKanbanCard(card)" *ngIf="!card.id">Dodaj</button>
         <button mat-raised-button color="primary" (click)="updateKanbanCard(card)" *ngIf="card.id">Zmień</button>
-        <button mat-raised-button color="primary" (click)="deleteKanbanCard(card)" *ngIf="card.id">Usuń</button>
+        <button class="delete-btn" mat-raised-button color="primary" (click)="deleteKanbanCard(card)" *ngIf="card.id">Usuń</button>
     </div>
 </div>

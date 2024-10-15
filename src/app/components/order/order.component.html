@@ -1,1 +1,66 @@
-<p>order works!</p>
+<h1>Lista wszystkich zamówień</h1>
+<button mat-raised-button color="primary" (click)="newOrder()">Nowe zamówienie</button>
+
+<mat-card>
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let order">{{ order.id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="productName">
+      <mat-header-cell *matHeaderCellDef>Nazwa Produktu</mat-header-cell>
+      <mat-cell *matCellDef="let order">{{ order.productName }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <mat-header-cell *matHeaderCellDef>Ilość</mat-header-cell>
+      <mat-cell *matCellDef="let order">{{ order.quantity }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="pricePerUnit">
+      <mat-header-cell *matHeaderCellDef>Cena</mat-header-cell>
+      <mat-cell *matCellDef="let order">{{ order.pricePerUnit }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="currency">
+      <mat-header-cell *matHeaderCellDef>Waluta</mat-header-cell>
+      <mat-cell *matCellDef="let order">{{ order.currency }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="pickupLocation">
+      <mat-header-cell *matHeaderCellDef>Miejsce Odbioru</mat-header-cell>
+      <mat-cell *matCellDef="let order">{{ order.pickupLocation }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="destination">
+      <mat-header-cell *matHeaderCellDef>Miejsce docelowe</mat-header-cell>
+      <mat-cell *matCellDef="let order">{{ order.destination }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="orderDate">
+      <mat-header-cell *matHeaderCellDef>Data Zamówienia</mat-header-cell>
+      <mat-cell *matCellDef="let order">{{ order.orderDate | date:'medium' }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dueDate">
+      <mat-header-cell *matHeaderCellDef>Termin</mat-header-cell>
+      <mat-cell *matCellDef="let order">{{ order.dueDate | date:'medium' }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="supplierName">
+      <mat-header-cell *matHeaderCellDef>Dostawca</mat-header-cell>
+      <mat-cell *matCellDef="let order">{{ order['supplierName'] }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+      <mat-cell *matCellDef="let order">{{ order.status }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</mat-card>
+

@@ -6,6 +6,11 @@ import { NgToastService } from 'ng-angular-popup';
 import ValidateForm from '../../helper/validationform';
 import { UserStoreService } from '../../services/user-store.service';
 
+
+/**
+ * @class LoginComponent
+*/
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -40,7 +45,7 @@ export class LoginComponent implements OnInit {
           this.loginForm.reset();
           this.auth.storeToken(res.accessToken);
           this.auth.storeRefreshToken(res.refreshToken);
-          const tokenPayload = this.auth.getDecodedToken(); // Zmieniono nazwę metody
+          const tokenPayload = this.auth.getDecodedToken();
           this.userStore.setFullNameForStore(tokenPayload.name);
           this.userStore.setRoleForStore(tokenPayload.role);
           this.toast.success({detail:"SUCCESS", summary:res.message, duration: 5000});
@@ -55,7 +60,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  navigateToRegistration() {
+  navigateToRegistration(): void {
     this.router.navigate(['/signup']);
   }
 }
