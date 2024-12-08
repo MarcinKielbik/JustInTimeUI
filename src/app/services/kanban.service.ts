@@ -4,11 +4,6 @@ import { Observable } from 'rxjs';
 import { KanbanCard } from '../models/kanban-card.model';
 import { AuthService } from './auth.service';
 
-
-/**
- * @class KanbanService
- */
-
 @Injectable({
   providedIn: 'root'
 })

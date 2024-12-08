@@ -3,9 +3,6 @@ import { Injectable } from '@angular/core';
 import { Order } from '../models/order.model';
 import { Observable } from 'rxjs';
 
-/**
- * @class OrderService
- */
 
 @Injectable({
   providedIn: 'root'

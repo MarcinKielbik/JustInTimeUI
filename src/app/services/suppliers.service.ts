@@ -4,10 +4,6 @@ import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
 import { Supplier } from '../models/supplier.model';
 
-/**
- * @class SuppliersService
-*/
-
 @Injectable({
   providedIn: 'root'
 })
